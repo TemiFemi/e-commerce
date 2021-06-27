@@ -12,12 +12,12 @@ router.get('/', (req, res) => {
             attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
         }
     })
-        .then(dbData => {
-            if (!dbData) {
+        .then(dbCatData => {
+            if (!dbCatData) {
                 res.status(404).json({ message: 'No categories found' });
                 return;
             }
-            res.json(dbData);
+            res.json(dbCatData);
         })
         .catch(err => {
             console.log(err);
@@ -37,12 +37,12 @@ router.get('/:id', (req, res) => {
             attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
         }
     })
-        .then(dbData => {
-            if (!dbData) {
+        .then(dbCatData => {
+            if (!dbCatData) {
                 res.status(404).json({ message: 'No categories found' });
                 return;
             }
-            res.json(dbData);
+            res.json(dbCatData);
         })
         .catch(err => {
             console.log(err);
@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
     Category.create({
         category_name: req.body.category_name
     })
-        .then(dbData => res.json(dbData))
+        .then(dbCatData => res.json(dbCatData))
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
@@ -69,12 +69,12 @@ router.put('/:id', (req, res) => {
             id: req.params.id
         }
     })
-        .then(dbData => {
-            if (!dbData) {
+        .then(dbCatData => {
+            if (!dbCatData) {
                 res.status(404).json({ message: 'No category found with this id' });
                 return;
             }
-            res.json(dbData);
+            res.json(dbCatData);
         })
         .catch(err => {
             console.log(err);
@@ -89,12 +89,12 @@ router.delete('/:id', (req, res) => {
             id: req.params.id
         }
     })
-        .then(dbData => {
-            if (!dbData) {
+        .then(dbCatData => {
+            if (!dbCatData) {
                 res.status(404).json({ message: 'No category found with that id.' });
                 return;
             }
-            res.json(dbData);
+            res.json(dbCatData);
         })
         .catch(err => {
             console.log(err);
